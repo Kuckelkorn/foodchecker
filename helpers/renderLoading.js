@@ -11,9 +11,5 @@ export const renderLoading = async (video) => {
   const canvas = document.querySelector('canvas')
 
   canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height)
-
-  // scanCode(video)
   scanCode(canvas)
-  // scanCode(image_data_url)
-
 }

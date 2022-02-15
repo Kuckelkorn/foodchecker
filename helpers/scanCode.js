@@ -1,21 +1,19 @@
 import getData from './getData.js'
+import { renderError } from './renderError.js';
 
 export const scanCode = async (image) => {
   if (!('BarcodeDetector' in window)) {
     console.log('Barcode Detector is not supported by this browser.');
   } else {
-    console.log('Barcode Detector supported!');
-    
     const formats = await BarcodeDetector.getSupportedFormats()
     const barcodeDetector = new BarcodeDetector({formats: await formats});
     
     barcodeDetector.detect(image)
       .then(barcodes => {
-        console.log('scanning code')
-        barcodes.forEach((barcode) => {
-          console.log(barcode.rawValue)
-          getData(barcode.rawValue)
-        });
+        if (barcodes.length != 0){
+          console.log(barcodes[0].rawValue)
+          getData(barcodes[0].rawValue)
+        } else { renderError('can\'t read barcode')}
       })
       .catch(err => {
         console.log(err);

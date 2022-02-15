@@ -13,7 +13,6 @@ export const renderLive = async () => {
       <label>737628064502</label>
       <video autoplay></video>
       <button id="scan">Scan</button>
-      <canvas id="canvas" width="320" height="240"></canvas>
     </form>`
 
   getBarcode()
