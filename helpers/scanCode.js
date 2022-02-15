@@ -1,3 +1,5 @@
+import getData from './getData.js'
+
 export const scanCode = async (image) => {
   if (!('BarcodeDetector' in window)) {
     console.log('Barcode Detector is not supported by this browser.');
@@ -12,6 +14,7 @@ export const scanCode = async (image) => {
         console.log('scanning code')
         barcodes.forEach((barcode) => {
           console.log(barcode.rawValue)
+          getData(barcode.rawValue)
         });
       })
       .catch(err => {
