@@ -15,10 +15,10 @@ export const renderProduct = (product) => {
   header.innerHTML = `<h1>${ title}</h1><p>${productName}</p>`
   main.innerHTML = `<section class="voedingswaarde">
     <h2>Voedingswaarde</h2>
-    <h3>Score: ${ nutrition.grade}</h3>
+    <h3>Score: ${nutrition.grade}</h3>
     </section>
     <section class="allergies">
     <h2> Allergieen</h2>
-    <p>${ allergies}</p>
+    <p>${allergies}</p>
     </section>`
 }
