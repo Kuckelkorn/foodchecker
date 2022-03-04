@@ -15,18 +15,18 @@ h1 {
   margin-top: 4rem;
 }
 
-main{
+main {
   margin: 0 auto;
 }
 
-form{
+form {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-form #search{
+form #search {
   border-radius: 100%;
   border-style: none;
   height: 4em;
@@ -34,7 +34,7 @@ form #search{
   background-color: green;
 }
 
-footer{
+footer {
   height: 4em;
   background-color: green;
   position: absolute;
