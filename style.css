@@ -10,35 +10,13 @@
   display: none;
 }
 
-main{
-  margin: 0 auto;
-}
-
-footer{
-  height: 4em;
-  background-color: green;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-}
-
 h1 {
   text-align: center;
   margin-top: 4rem;
 }
 
-footer button {
-  border-radius: 50%;
-  height: 8em;
-  width: 8em;
-  position: relative;
-  top: -4em;
-  background-color: green;
-  border-style: none;
-  color: white;
+main{
+  margin: 0 auto;
 }
 
 form{
@@ -54,4 +32,26 @@ form #search{
   height: 4em;
   width: 4em;
   background-color: green;
+}
+
+footer{
+  height: 4em;
+  background-color: green;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer button {
+  border-radius: 50%;
+  height: 8em;
+  width: 8em;
+  position: relative;
+  top: -4em;
+  background-color: green;
+  border-style: none;
+  color: white;
 }
