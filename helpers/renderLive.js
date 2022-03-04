@@ -1,5 +1,6 @@
 import { getBarcode } from "./getCode.js"
 
+// Rendering the live feed from the camera on the device
 export const renderLive = async () => {
   const main = document.querySelector('main')
   const title = document.querySelector('header')

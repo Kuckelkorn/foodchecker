@@ -1,6 +1,7 @@
 import getData from './getData.js'
 import { renderError } from './renderError.js';
 
+// Interpreting the code scanned from the video feed.  
 export const scanCode = async (image) => {
   if (!('BarcodeDetector' in window)) {
     console.log('Barcode Detector is not supported by this browser.');

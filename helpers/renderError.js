@@ -1,3 +1,5 @@
+// Rendering error message
+
 export const renderError = async (message) => {
   console.log(message)
   const main = document.querySelector('main')

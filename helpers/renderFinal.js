@@ -1,3 +1,5 @@
+// Rendering product information
+
 export const renderProduct = (product) => {
   const footer = document.querySelector('footer')
   const header = document.querySelector('header')

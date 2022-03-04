@@ -1,5 +1,7 @@
 import { renderLoading } from "./renderLoading.js";
 
+
+// Barcode lezen van de camera. 
 export const getBarcode = async() => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({

@@ -1,5 +1,6 @@
 import { scanCode } from "./scanCode.js"
 
+// Rendering loading screen when something is loading
 export const renderLoading = async (video) => {
   const main = document.querySelector('main')
   const title = document.querySelector('header')
