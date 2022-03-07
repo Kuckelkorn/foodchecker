@@ -1,5 +1,4 @@
-import { renderLive } from "./helpers/renderLive.js"
+import { handleRoutes } from "./modules/router.js"
 
-const camera = document.querySelector('#camera')
 
-camera.addEventListener('click', () => renderLive())
+handleRoutes();

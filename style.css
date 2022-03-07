@@ -10,6 +10,10 @@
   display: none;
 }
 
+.active {
+  display: block;
+}
+
 h1 {
   text-align: center;
   margin-top: 4rem;
@@ -45,13 +49,15 @@ footer {
   justify-content: space-around;
 }
 
-footer button {
+footer a {
   border-radius: 50%;
-  height: 8em;
-  width: 8em;
+  height: 7em;
+  width: 7em;
   position: relative;
-  top: -4em;
+  top: -3em;
   background-color: green;
   border-style: none;
   color: white;
+  display: grid;
+  place-items: center;
 }
