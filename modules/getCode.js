@@ -1,50 +1,54 @@
 import { renderLoading, renderError } from "./render.js";
 
-// Barcode lezen van de camera. 
-export const getBarcode = async() => {
+// Start Camera
+export const startCamera = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: true
     });
 
-    const scanBtn = document.querySelector('#scan')
+    // const scanBtn = document.querySelector('#scan')
     const video = document.querySelector('video')
 
     video.srcObject = await stream
-
-    scanBtn.addEventListener('click', async(e) => {
-      e.preventDefault()
-      renderLoading(await video)
-      stream.getTracks().forEach(function(track) {
-        track.stop();
-      });
-    })
-
+    await video.play()
   } catch(err) {
-      console.log(err)
+    console.log(err)
   }
 }
 
-// Interpreting the code scanned from the video feed.  
-export const scanCode = async (image) => {
-  if (!('BarcodeDetector' in window)) {
-    console.log('Barcode Detector is not supported by this browser.');
-  } else {
-    const formats = await BarcodeDetector.getSupportedFormats()
-    const barcodeDetector = new BarcodeDetector({formats: await formats});
-    
-    barcodeDetector.detect(image)
-      .then(barcodes => {
-        if (barcodes.length != 0){
-          console.log(barcodes[0].rawValue)
+// getCode
+export const getBarcode = async(video) => {
+    if (!('BarcodeDetector' in window)) {
+      console.log('Barcode Detector is not supported by this browser.');
+    } else {
+      const formats = await BarcodeDetector.getSupportedFormats()
+      const barcodeDetector = new BarcodeDetector({formats: await formats});
+      
+      window.setInterval(async () => {
+        const barcodes = await barcodeDetector.detect(video);
+        if (!barcodes.length <= 0){ 
+          console.log(await barcodes[0].rawValue)
+          // window.location.hash = '#' + barcodes[0].rawValue;
           return barcodes[0].rawValue
-        } else { 
-          renderError('can\'t read barcode')
+        } else {
+          renderError('no barcode detected')
         }
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
+      }, 100)}
+}
+
+// Stop Camera
+export const endCamera = () => {
+  const video = document.querySelector('video')
+  const tracks = video.srcObject.getTracks()
+      
+  tracks.forEach(function(track) {
+      track.stop();
+  });
+
+  video.srcObject = null
+  for (let i = 1; i < 99999; i++)
+  window.clearInterval(i);
+  console.log('camera stopped')
 }
