@@ -13,10 +13,9 @@ export function handleRoutes() {
       renderCamera()
         .then(() => {
           startCamera()
-          const video = document.querySelector('video')
           const btn = document.querySelector('#scan')
-          const barcode = getBarcode(video)
-          // const barcode = 8711400408540 || 737628064502
+          // const barcode = getBarcode(video)
+          const barcode = 8711400408540 || 737628064502
           btn.addEventListener('click', () => {
             location.href = `#product/${barcode}`
             endCamera()
@@ -24,7 +23,7 @@ export function handleRoutes() {
         })
     },
     'product/:barcode': async (barcode)=>{
-      // renderLoading()
+      renderLoading()
       const data = await getData(barcode)
       if(data.status === 1){
         renderProduct(await data.product)
