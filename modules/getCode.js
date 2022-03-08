@@ -1,5 +1,4 @@
-import { renderLoading } from "./renderLoading.js";
-
+import { renderLoading, renderError } from "./render.js";
 
 // Barcode lezen van de camera. 
 export const getBarcode = async() => {
@@ -24,5 +23,28 @@ export const getBarcode = async() => {
 
   } catch(err) {
       console.log(err)
+  }
+}
+
+// Interpreting the code scanned from the video feed.  
+export const scanCode = async (image) => {
+  if (!('BarcodeDetector' in window)) {
+    console.log('Barcode Detector is not supported by this browser.');
+  } else {
+    const formats = await BarcodeDetector.getSupportedFormats()
+    const barcodeDetector = new BarcodeDetector({formats: await formats});
+    
+    barcodeDetector.detect(image)
+      .then(barcodes => {
+        if (barcodes.length != 0){
+          console.log(barcodes[0].rawValue)
+          return barcodes[0].rawValue
+        } else { 
+          renderError('can\'t read barcode')
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 }
