@@ -5,7 +5,7 @@ export const renderCamera = async () => {
   const title = document.querySelector('header')
   const footer = document.querySelector('footer')
 
-  footer.classList.toggle('hidden')
+  footer.classList.add('hidden')
 
   // Changing the HTML 
   title.innerHTML = "<h1>Foodchecker</h1>"
@@ -26,7 +26,7 @@ export const renderProduct = (product) => {
     const nutrition =  product.nutriscore_data // OBJECT
     const allergies =  product.allergens_hierarchy // ARRAY
   
-    footer.classList.toggle('hidden')
+    footer.classList.remove('hidden')
   
     // Changing the HTML with the API data
     header.innerHTML = `<h1>${ title}</h1><p>${productName}</p>`
@@ -61,6 +61,7 @@ export const renderError = async (message) => {
   const footer = document.querySelector('footer')
 
   footer.classList.remove('hidden')
+  
   // Changing the HTML 
   title.innerHTML = "<h1>Foodchecker</h1>"
   const p = document.createElement("p")
