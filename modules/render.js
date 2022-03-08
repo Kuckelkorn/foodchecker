@@ -48,8 +48,11 @@ export const renderProduct = (product) => {
     // Filter necessary items
     const title =  product.product_name
     const productName = product.generic_name
-    const nutrition =  product.nutriscore_data // OBJECT
+    // const nutrition =  product.nutriscore_data // OBJECT
     const allergies =  product.allergens_hierarchy // ARRAY
+    const picture = product.selected_images.front.display
+
+    console.log(picture)
   
     camera.classList.add('hidden')
     initial.classList.add('hidden')
@@ -59,8 +62,9 @@ export const renderProduct = (product) => {
     // Changing the HTML with the API data
     header.innerHTML = `<h1>${title}</h1><p>${productName}</p>`
 
-    nutritionInfo.insertAdjacentHTML("afterbegin", `<h3>Score: ${nutrition.grade}</h3>`)
-    allergiesInfo.insertAdjacentHTML("afterbegin", `<p>${allergies}</p>`)
+    productInfo.insertAdjacentHTML("afterbegin", `<img src=${picture.es} alt="product foto">`)
+    // nutritionInfo.insertAdjacentHTML("afterbegin", `<h3>Score: ${nutrition.grade}</h3>`)
+    allergiesInfo.insertAdjacentHTML("afterend", `<p>${allergies}</p>`)
 }
 
 export const renderLoading = async() => {

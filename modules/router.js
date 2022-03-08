@@ -28,7 +28,7 @@ export function handleRoutes() {
       if(data.status === 1){
         renderProduct(await data.product)
       } else {
-        renderError(await data.status_verbose)
+        renderError('Geen product gevonden')
       }
     }
   })
