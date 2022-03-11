@@ -1,6 +1,6 @@
 import './vendors/routie.min.js'
 
-import { renderCamera, renderProduct, renderLoading, renderInitial } from './render.js'
+import { renderCamera, renderProduct, renderLoading, renderInitial, renderError } from './render.js'
 import { getBarcode, endCamera, startCamera } from './getCode.js'
 import getData from './getData.js'
 
@@ -14,6 +14,7 @@ export function handleRoutes() {
         .then(() => {
           startCamera()
           const btn = document.querySelector('#scan')
+          const video = document.querySelector('video')
           // const barcode = getBarcode(video)
           const barcode = 8711400408540 || 737628064502
           btn.addEventListener('click', () => {
